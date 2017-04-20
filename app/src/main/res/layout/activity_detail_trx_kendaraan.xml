@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    tools:context="com.example.user.sirent.User.DetailTrxKendaraan">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/e_IDtoko"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/trx_sewa"
+            android:hint="Tanggal Sewa"
+            android:focusable="false"
+            android:textColor="@color/dark_dark"
+            android:focusableInTouchMode="false"
+            android:ems="10"
+            style="@android:style/Widget.Material.EditText"
+            android:inputType="date" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/trx_kem"
+            android:hint="Tanggal Kembali"
+            android:focusable="false"
+            android:textColor="@color/dark_dark"
+            android:focusableInTouchMode="false"
+            android:ems="10"
+            style="@android:style/Widget.Material.EditText"
+            android:inputType="date" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/trx_lokasi"
+            android:hint="Alamat Pengiriman"
+            android:focusable="false"
+            android:textColor="@color/dark_dark"
+            android:focusableInTouchMode="false"
+            android:ems="10"
+            style="@android:style/Widget.Material.EditText"
+            android:inputType="date" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/tx_detlokasi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Lokasi Detail"
+        android:imeOptions="actionDone"
+        android:textColor="@color/dark_light"
+        android:inputType="textPostalAddress" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/but_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Booking"
+        android:background="@color/grass_primary"/>
+
+</LinearLayout>

@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "909157855586",
+    "firebase_url": "https://sirent-147906.firebaseio.com",
+    "project_id": "sirent-147906",
+    "storage_bucket": "sirent-147906.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:909157855586:android:2bcd9f8c2e3bf168",
+        "android_client_info": {
+          "package_name": "com.example.user.sirent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "909157855586-ig70pdivoar3k1difbd15s4b7kn8df41.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.user.sirent",
+            "certificate_hash": "5c0d2e549c83cf3da91d2237c480556dd25b8b57"
+          }
+        },
+        {
+          "client_id": "909157855586-5nn6qqmuleviujrldv8of6236bldi7ce.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.user.sirent",
+            "certificate_hash": "7711456f5e1804b72b1efe89019fb32319b9259f"
+          }
+        },
+        {
+          "client_id": "909157855586-j60l1aieifj96sgp9fs2k6bap1ae31ja.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAen2Al1LN-xbLePNOGkH_mUti2au2TGCw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "909157855586-j60l1aieifj96sgp9fs2k6bap1ae31ja.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

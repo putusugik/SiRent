@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_trx_kendaraan"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.user.sirent.User.TrxKendaraan">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:src="@mipmap/ic_thumb"
+        android:id="@+id/i"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:visibility="gone"
+        android:id="@+id/e_idToko"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tx_nKend"
+            android:hint="Nama Kendaraan"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:ems="10"
+            style="@android:style/Widget.Material.EditText"
+            android:inputType="textCapCharacters" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tx_merk"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:hint="Merk"
+            android:ems="10"
+            style="@android:style/Widget.Material.EditText"
+            android:inputType="textCapCharacters" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tx_toko"
+            android:hint="Nama Toko"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:ems="10"
+            style="@android:style/Widget.Material.EditText"
+            android:inputType="textCapCharacters" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tx_harga"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:hint="Harga Sewa"
+            android:ems="10"
+            style="@android:style/Widget.Material.EditText"
+            android:inputType="textCapCharacters" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tx_deskripsi"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:hint="Deskripsi"
+            android:ems="10"
+            android:singleLine="false"
+            style="@android:style/Widget.Material.EditText"
+            android:inputType="textCapCharacters" />
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Booking"
+        android:id="@+id/but_book"
+        android:background="@color/colorPrimary1"/>
+
+</LinearLayout>
+</ScrollView>

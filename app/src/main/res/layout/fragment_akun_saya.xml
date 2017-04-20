@@ -1,0 +1,14 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.user.sirent.User.Fragment_AkunSaya">
+
+    <include layout="@layout/fragment_akun_saya_main"/>
+
+
+
+
+
+</android.support.design.widget.CoordinatorLayout>

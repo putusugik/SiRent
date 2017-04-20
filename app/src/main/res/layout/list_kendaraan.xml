@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+        <!--//android:layout_toStartOf="@+id/linearLayout">-->
+
+        <TextView
+            android:id="@+id/ID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:id="@+id/namaken"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_width="386dp"
+            android:layout_height="wrap_content"
+            android:text="Nama Kendaraan"
+            android:textColor="@color/colorPrimary"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/button3" />
+
+        <TextView
+            android:id="@+id/no_plat"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nomor Plat"
+            android:textColor="@color/colorPrimary"
+            android:layout_below="@+id/no_mesin"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/button3" />
+
+        <TextView
+            android:id="@+id/no_mesin"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nomor Mesin"
+            android:textColor="@color/colorPrimary"
+            android:layout_below="@+id/namaken"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/button3" />
+
+    </LinearLayout>
+
+</RelativeLayout>
