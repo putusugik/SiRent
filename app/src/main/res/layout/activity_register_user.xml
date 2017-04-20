@@ -8,78 +8,83 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.user.sirent.register_user"
+    tools:context="com.example.user.sirent.User.register_user"
     android:orientation="vertical">
 
-    <EditText
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textCapSentences|textPersonName"
-        android:ems="10"
-        android:layout_alignParentTop="false"
-        android:layout_alignParentStart="false"
-        android:id="@+id/nama_depan"
-        android:hint="Nama Depan" />
+        android:layout_height="match_parent">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textCapSentences|textPersonName"
-        android:ems="10"
-        android:layout_alignParentTop="false"
-        android:layout_alignParentStart="false"
-        android:id="@+id/nama_blkg"
-        android:hint="Nama Belakang" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_alignParentTop="false"
-        android:layout_alignParentStart="false"
-        android:id="@+id/username"
-        android:hint="Username" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapSentences|textPersonName"
+                android:ems="10"
+                android:layout_alignParentTop="false"
+                android:layout_alignParentStart="false"
+                android:id="@+id/nama_depan"
+                android:hint="Nama Depan" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:layout_alignParentTop="false"
-        android:layout_alignParentStart="false"
-        android:id="@+id/email"
-        android:hint="e-mail" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapSentences|textPersonName"
+                android:ems="10"
+                android:layout_alignParentTop="false"
+                android:layout_alignParentStart="false"
+                android:id="@+id/nama_blkg"
+                android:hint="Nama Belakang" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/password"
-        android:hint="Password"
-        style="@style/Widget.AppCompat.AutoCompleteTextView" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:layout_alignParentTop="false"
+                android:layout_alignParentStart="false"
+                android:id="@+id/username"
+                android:hint="Username" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/repassword"
-        android:hint="Retype Password"
-        style="@style/Widget.AppCompat.AutoCompleteTextView" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:ems="10"
+                android:layout_alignParentTop="false"
+                android:layout_alignParentStart="false"
+                android:id="@+id/email"
+                android:hint="e-mail" />
 
-    <Button
-        android:text="Register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/register"
-        android:onClick="onregister"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/password"
+                android:hint="Password"
+                style="@style/Widget.AppCompat.AutoCompleteTextView" />
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/repassword"
+                android:hint="Retype Password"
+                style="@style/Widget.AppCompat.AutoCompleteTextView" />
+
+            <Button
+                android:text="Register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/register"
+                android:onClick="onregister"/>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
