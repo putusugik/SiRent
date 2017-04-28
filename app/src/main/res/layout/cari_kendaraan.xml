@@ -1,16 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="Cari berdasarkan" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/RGcari"
+        android:layout_marginLeft="20dp">
+
+        <RadioButton
+            android:id="@+id/rNamakend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Nama Kendaraan"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+        <RadioButton
+            android:id="@+id/rJenisKend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Jenis Kendaraan"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:enabled="false"
+        android:text="Pilih Kendaraan yang dicari"
+        android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
+        android:textColor="?android:attr/textColorHint"
+        android:textSize="14sp" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/RGkend"
+        android:layout_marginLeft="20dp">
+
+        <RadioButton
+            android:id="@+id/rmobil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Mobil"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+        <RadioButton
+            android:id="@+id/rmotor"
+            style="@android:style/Widget.Holo.Light.CompoundButton.RadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="false"
+            android:text="Motor"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Opsi pilihan"
+        android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
+        android:textColor="?android:attr/textColorHint"
+        android:textSize="14sp" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/RGpilih"
+        android:layout_marginLeft="20dp">
+
+        <RadioButton
+            android:id="@+id/rmahal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Sewa Termahal-Sewa Termurah"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+        <RadioButton
+            android:id="@+id/rmurah"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Sewa Termurah-Sewa Termahal"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="Nama kendaraan" />
 
     <EditText
         android:id="@+id/t_cari"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_marginLeft="20dp"
         android:ems="10"
+        android:hint="Cari Kendaraan"
         android:imeOptions="actionSearch"
         android:inputType="text"
-        android:hint="Cari Kendaraan" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Small"
+        android:textColor="@color/cast_intro_overlay_background_color" />
 
 </LinearLayout>

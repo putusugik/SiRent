@@ -21,69 +21,107 @@
             android:orientation="vertical" >
 
             <EditText
+                android:id="@+id/editText2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textCapSentences|textPersonName"
-                android:ems="10"
-                android:layout_alignParentTop="false"
-                android:layout_alignParentStart="false"
-                android:id="@+id/nama_depan"
-                android:hint="Nama Depan" />
+                android:enabled="false"
+                android:backgroundTint="@color/colorAccent"
+                android:textStyle="bold"
+                android:text="INFORMASI PRIBADI"
+                android:textColor="@color/dark_dark" />
 
-            <EditText
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textCapSentences|textPersonName"
-                android:ems="10"
-                android:layout_alignParentTop="false"
-                android:layout_alignParentStart="false"
-                android:id="@+id/nama_blkg"
-                android:hint="Nama Belakang" />
+                android:layout_height="match_parent">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapSentences|textPersonName"
+                    android:ems="10"
+                    android:layout_alignParentTop="false"
+                    android:layout_alignParentStart="false"
+                    android:id="@+id/nama_depan"
+                    android:hint="Nama Depan" />
+            </android.support.design.widget.TextInputLayout>
 
-            <EditText
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:ems="10"
-                android:layout_alignParentTop="false"
-                android:layout_alignParentStart="false"
-                android:id="@+id/username"
-                android:hint="Username" />
+                android:layout_height="match_parent">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapSentences|textPersonName"
+                    android:ems="10"
+                    android:layout_alignParentTop="false"
+                    android:layout_alignParentStart="false"
+                    android:id="@+id/nama_blkg"
+                    android:hint="Nama Belakang" />
+            </android.support.design.widget.TextInputLayout>
 
-            <EditText
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:ems="10"
-                android:layout_alignParentTop="false"
-                android:layout_alignParentStart="false"
-                android:id="@+id/email"
-                android:hint="e-mail" />
+                android:layout_height="match_parent">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:layout_alignParentTop="false"
+                    android:layout_alignParentStart="false"
+                    android:id="@+id/username"
+                    android:hint="Username" />
+            </android.support.design.widget.TextInputLayout>
 
-            <EditText
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:ems="10"
-                android:id="@+id/password"
-                android:hint="Password"
-                style="@style/Widget.AppCompat.AutoCompleteTextView" />
+                android:layout_height="match_parent">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:ems="10"
+                    android:layout_alignParentTop="false"
+                    android:layout_alignParentStart="false"
+                    android:id="@+id/email"
+                    android:hint="e-mail" />
+            </android.support.design.widget.TextInputLayout>
 
-            <EditText
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:ems="10"
-                android:id="@+id/repassword"
-                android:hint="Retype Password"
-                style="@style/Widget.AppCompat.AutoCompleteTextView" />
+                android:layout_height="match_parent">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:ems="10"
+                    android:id="@+id/password"
+                    android:hint="Password"
+                    style="@style/Widget.AppCompat.AutoCompleteTextView" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:ems="10"
+                    android:id="@+id/repassword"
+                    android:hint="Retype Password"
+                    style="@style/Widget.AppCompat.AutoCompleteTextView" />
+            </android.support.design.widget.TextInputLayout>
 
             <Button
-                android:text="Register"
+                android:id="@+id/register"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/register"
-                android:onClick="onregister"/>
+                android:background="?android:attr/colorEdgeEffect"
+                android:onClick="onregister"
+                android:text="Register"
+                android:textAppearance="@style/TextAppearance.AppCompat.Menu"
+                android:textColor="@color/cardview_light_background" />
         </LinearLayout>
     </ScrollView>
 

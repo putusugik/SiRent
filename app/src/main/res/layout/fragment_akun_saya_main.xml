@@ -47,7 +47,6 @@
                 android:backgroundTint="@color/colorAccent"
                 android:textStyle="bold"
                 android:text="INFORMASI PRIBADI"
-
                 android:textColor="@color/dark_dark" />
 
             <android.support.design.widget.TextInputLayout
