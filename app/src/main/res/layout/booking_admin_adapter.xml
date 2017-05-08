@@ -27,7 +27,7 @@
 
         <TextView
             android:id="@+id/namaken"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:layout_width="386dp"
             android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
 
         <TextView
             android:id="@+id/tgl_sew"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
 
         <TextView
             android:id="@+id/tgl_kem"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,13 +62,24 @@
 
         <TextView
             android:id="@+id/sttus"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Status"
             android:textColor="@color/colorPrimary"
             android:layout_below="@+id/namaken"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/button3" />
+
+        <TextView
+            android:id="@+id/t_alamat"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Alamat"
+            android:textColor="@color/colorPrimary"
             android:layout_alignParentStart="true"
             android:layout_toStartOf="@+id/button3" />
 

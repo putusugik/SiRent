@@ -4,8 +4,13 @@
         <item
         android:id="@+id/action_search"
         android:title="Cari"
-        android:orderInCategory="200"
+        android:orderInCategory="100"
         android:icon="@drawable/places_ic_search"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
 
+        <item
+            android:id="@+id/pass"
+            android:orderInCategory="100"
+            android:title="Ubah Password"
+            app:showAsAction="never" />
 </menu>

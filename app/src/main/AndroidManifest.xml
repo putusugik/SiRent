@@ -26,7 +26,6 @@
             android:label="Sign in SiRent" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -58,7 +57,8 @@
         <activity
             android:name=".Admin.Dashboard_Admin"
             android:label="Dashboard Admin"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:launchMode="singleTop"/>
         <activity android:name=".Admin.Admin_InsertKend" />
         <activity android:name=".Admin.Kelola_KendaraanAdmin" />
         <activity android:name=".Admin.DetailKendaraanAdmin" />
@@ -72,6 +72,17 @@
         <activity
             android:name=".Admin.MapsAdmin"
             android:label="Maps Admin" />
+        <activity android:name=".Admin.Ubah_Password"/>
+        <service android:name=".Utility.MyFirebaseMssService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".Utility.FirebaseIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
