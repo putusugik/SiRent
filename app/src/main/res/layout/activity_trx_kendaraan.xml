@@ -85,8 +85,10 @@
             android:hint="Harga Sewa"
             android:ems="10"
             style="@android:style/Widget.Material.EditText"
-            android:inputType="textCapCharacters" />
+            android:inputType="number" />
     </android.support.design.widget.TextInputLayout>
+
+
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"

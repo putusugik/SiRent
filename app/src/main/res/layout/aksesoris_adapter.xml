@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="0.9"
+    android:layout_marginLeft="10dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/id_aks"
+        android:visibility="gone"/>
+
+    <CheckBox
+        android:id="@+id/chk_aksesori"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:layout_weight="0.4"/>
+    <TextView
+        android:id="@+id/tv_aksesoris"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Aksesoris"
+        android:layout_weight="0.1"
+        android:textSize="17sp"
+        android:textColor="@color/dark_dark"
+        style="@style/Base.TextAppearance.AppCompat.Body2"/>
+
+    <NumberPicker
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.4"/>
+
+
+
+
+
+
+</LinearLayout>
