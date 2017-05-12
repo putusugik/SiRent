@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.user.sirent.JSON.JSONParser;
 import com.example.user.sirent.R;
@@ -29,8 +30,8 @@ import cz.msebera.android.httpclient.message.BasicNameValuePair;
 public class DetailBookingAdmin extends AppCompatActivity {
 
     int id, idToko;
-    String idKend, update, decl;
-    EditText namakend, noplat, tglsewa, tglkembali, penyewa, status;
+    String idKend, update, decl, st_sewa;
+    EditText namakend, noplat, tglsewa, tglkembali, penyewa, status, alamat;
     Button konfirm, decline;
     TextView idRental;
 
@@ -56,6 +57,8 @@ public class DetailBookingAdmin extends AppCompatActivity {
 
         Intent i = getIntent();
         idKend = i.getStringExtra("ID");
+        st_sewa = i.getStringExtra("status");
+
 
         idRental = (TextView)findViewById(R.id.idRental);
         konfirm = (Button)findViewById(R.id.confirm);
@@ -67,34 +70,41 @@ public class DetailBookingAdmin extends AppCompatActivity {
         tglkembali = (EditText)findViewById(R.id.tgl_kembali);
         penyewa = (EditText)findViewById(R.id.penyewa);
         status = (EditText)findViewById(R.id.sttus);
+        alamat = (EditText)findViewById(R.id.alamat_pengiriman);
 
         sharedPref = new SharedPref(getApplicationContext());
         idToko = sharedPref.getTokoID();
         new getBookDetail().execute();
 
-        konfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final AlertDialog.Builder aDialog = new AlertDialog.Builder(DetailBookingAdmin.this);
-                aDialog.setMessage("Terima pesanan ini ?");
-                aDialog.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        update = "confirm";
-                        new updateConfirm().execute();
-                    }
-                });
-                aDialog.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        decl = "decline";
-                        new updateDecline().execute();
-                    }
-                });
-                AlertDialog alert = aDialog.create();
-                alert.show();
-            }
-        });
+        if (st_sewa.equals("booking")){
+            konfirm.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final AlertDialog.Builder aDialog = new AlertDialog.Builder(DetailBookingAdmin.this);
+                    aDialog.setMessage("Terima pesanan ini ?");
+                    aDialog.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            update = "confirm";
+                            new updateConfirm().execute();
+                        }
+                    });
+                    aDialog.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            decl = "decline";
+                            new updateDecline().execute();
+                        }
+                    });
+                    AlertDialog alert = aDialog.create();
+                    alert.show();
+                }
+            });
+        } else {
+            konfirm.setEnabled(false);
+        }
+
+
 
 
     }
@@ -121,6 +131,7 @@ public class DetailBookingAdmin extends AppCompatActivity {
                     list.add(jsonObject.getString("tgl_kembali"));
                     list.add(jsonObject.getString("nama_belakang"));
                     list.add(jsonObject.getString("status_rental"));
+                    list.add(jsonObject.getString("alamat"));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -138,6 +149,7 @@ public class DetailBookingAdmin extends AppCompatActivity {
             tglkembali.setText(result.get(5));
             penyewa.setText(result.get(6));
             status.setText(result.get(7));
+            alamat.setText(result.get(8));
         }
     }
 

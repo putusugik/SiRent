@@ -34,6 +34,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.user.sirent.Admin.Ubah_Password;
 import com.example.user.sirent.Image.ImageLoader;
 import com.example.user.sirent.JSON.JSONParser;
 import com.example.user.sirent.R;
@@ -48,7 +49,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import cz.msebera.android.httpclient.NameValuePair;
@@ -68,6 +68,7 @@ public class Dashboard extends AppCompatActivity
     private SharedPref sharedPref;
     public ImageLoader imageLoader;
     private MenuItem mSearchAction;
+    MenuItem uPass;
     RecyclerView rView;
     private AdapterKendaraan aKendaraan;
     List<DataKendaraan> data  = new ArrayList<>();
@@ -80,22 +81,6 @@ public class Dashboard extends AppCompatActivity
     int id;
 
     private ProgressDialog progressDialog;
-    String[] colors = new String[]{
-            "Sewa Termurah-Sewa Termahal",
-            "Sewa Termahal-Sewa Termurah",
-            "Mobil",
-            "Motor",
-
-    };
-    final boolean[] checkedColors = new boolean[]{
-            false,
-            false,
-            false,
-            false,
-
-
-    };
-    final List<String> colorsList = Arrays.asList(colors);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +88,7 @@ public class Dashboard extends AppCompatActivity
         setContentView(R.layout.activity_dashboard);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        invalidateOptionsMenu();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -166,6 +152,8 @@ public class Dashboard extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.dashboard, menu);
+        uPass = menu.findItem(R.id.pass);
+        uPass.setVisible(false);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -175,13 +163,19 @@ public class Dashboard extends AppCompatActivity
         switch (id){
             case R.id.action_search:
                 handleSearch();
-                return true;
+                break;
+            case R.id.pass:
+                Intent i = new Intent(Dashboard.this, Ubah_Password.class);
+                startActivity(i);
+                break;
+
+
+
         }
         return super.onOptionsItemSelected(item);
     }
 
     private void handleSearch() {
-        Toast.makeText(this, "Tesss", Toast.LENGTH_SHORT).show();
         AlertDialog.Builder alert = new AlertDialog.Builder(Dashboard.this);
         LayoutInflater infalter = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v = infalter.inflate(R.layout.cari_kendaraan, null);
@@ -264,69 +258,45 @@ public class Dashboard extends AppCompatActivity
         });
         AlertDialog builder = alert.create();
         builder.show();
-        /*final ActionBar action = getSupportActionBar();
-        if (isSearchOpened){
-            action.setDisplayShowCustomEnabled(false);
-            action.setDisplayShowTitleEnabled(true);
-
-            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(edtSearch.getWindowToken(), 0);
-            mSearchAction.setIcon(getResources().getDrawable(R.drawable.places_ic_search));
-            isSearchOpened = false;
-        } else {
-            action.setDisplayShowCustomEnabled(true);
-            action.setCustomView(R.layout.cari_kendaraan);
-            action.setDisplayShowTitleEnabled(false);
-            edtSearch = (EditText)action.getCustomView().findViewById(R.id.t_cari);
-            edtSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-                @Override
-                public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                    if (actionId == EditorInfo.IME_ACTION_SEARCH){
-            //            doseacrh();
-
-                        return  true;
-                }
-                    return false;
-                }
-            });
-            edtSearch.requestFocus();
-            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.showSoftInput(edtSearch, InputMethodManager.SHOW_IMPLICIT);
-            mSearchAction.setIcon(getResources().getDrawable(R.drawable.places_ic_search));
-            isSearchOpened = true;
-
-        }*/
     }
 
     private void displaySelected (int itemID){
         Fragment fragment = null;
 
+
         switch (itemID){
             case R.id.nav_kend:
+                uPass.setVisible(false);
+                mSearchAction.setVisible(true);
                 fragment = new Fragment_Kendaraan();
                 break;
             case R.id.nav_statusbook:
                 fragment = new Fragment_StatusBookingUser();
                 mSearchAction.setVisible(false);
+                uPass.setVisible(false);
                 break;
             case R.id.nav_histori:
                 fragment = new Fragment_HistoriUser();
                 mSearchAction.setVisible(false);
-
+                uPass.setVisible(false);
                 break;
             case R.id.nav_myakun:
                 mSearchAction.setVisible(false);
+                uPass.setVisible(true);
                 fragment = new Fragment_AkunSaya();
                 break;
             case R.id.nav_toko:
+                uPass.setVisible(false);
                 mSearchAction.setVisible(false);
                 daftarToko();
                 break;
             case R.id.nav_about:
+                uPass.setVisible(false);
                 mSearchAction.setVisible(false);
                 Toast.makeText(this, "Ini About", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_logout:
+                uPass.setVisible(false);
                 mSearchAction.setVisible(false);
                 logoutUser();
                 break;
@@ -348,42 +318,6 @@ public class Dashboard extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        /*int id = item.getItemId();
-        Fragment fragment = null;
-        Class fragmentClass =null;
-
-
-        if (id == R.id.nav_camera) {
-            fragmentClass = Fragment_Kendaraan.class;
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage){
-
-        } else if (id == R.id.nav_toko) {
-
-        } else if (id == R.id.nav_about) {
-            Toast.makeText(this, "Ini About", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_logout) {
-            logoutUser();
-        }
-
-        try{
-            fragment = (Fragment)fragmentClass.newInstance();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
-        }
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);*/
         displaySelected(item.getItemId());
         return true;
     }
@@ -528,6 +462,16 @@ public class Dashboard extends AppCompatActivity
 
 
     private class searchKend extends AsyncTask<String, String, String> {
+        ProgressDialog p = new ProgressDialog(Dashboard.this);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            p.setMessage("Mencari");
+            p.setCancelable(false);
+            p.show();
+        }
+
         @Override
         protected String doInBackground(String... args) {
             List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -587,6 +531,7 @@ public class Dashboard extends AppCompatActivity
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            p.dismiss();
         }
     }
 }

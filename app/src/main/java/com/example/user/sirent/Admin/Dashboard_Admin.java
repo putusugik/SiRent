@@ -80,20 +80,72 @@ public class Dashboard_Admin extends AppCompatActivity
         NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view_admin);
         navigationView.setNavigationItemSelectedListener(this);
 
-        if(savedInstanceState == null) {
-            Fragment fragment = null;
-            Class fragmentClass = null;
-            fragmentClass = FragmentKelolaKendaraan.class;
-            try {
-                fragment = (Fragment) fragmentClass.newInstance();
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
 
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.flContentAdmin, fragment).commit();
+        /*String mFra = getIntent().getStringExtra("FragmentBooking");
+        Toast.makeText(this, "Hai: "+mFra, Toast.LENGTH_SHORT).show();*/
+        /*Bundle extra = getIntent().getExtras();
+        Toast.makeText(this, "test!!!!!!!!!!!!!!!!!!!!", Toast.LENGTH_SHORT).show();
+        if (extra!=null){
+            String idFrg = extra.getString("FragmentBooking");
+            Toast.makeText(this, "Hello: "+idFrg, Toast.LENGTH_SHORT).show();
+            if (idFrg.equals("book")){
+                Log.d(TAG_SUCCESS, "Test");
+//            displaySelected(R.id.nav_booking);
+                Fragment fragment = null;
+                Class fragmentClass = null;
+                fragmentClass = FragmentBookingKendaraan.class;
+                try {
+                    fragment = (Fragment) fragmentClass.newInstance();
+                } catch (InstantiationException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.flContentAdmin, fragment).commit();
+            }
+        }*/
+
+
+        if(savedInstanceState == null) {
+            if (getIntent().getStringExtra("Booking")!=null){
+                if (getIntent().getStringExtra("Booking").equals("book")){
+                    Toast.makeText(this, "Hahahahaahah", Toast.LENGTH_SHORT).show();
+                    /*FragmentManager fragmentManager = getSupportFragmentManager();
+                    fragmentManager
+                            .beginTransaction()
+                            .replace(R.id.flContentAdmin, new FragmentBookingKendaraan())
+                            .commit();*/
+                    Fragment fragment = null;
+                    Class fragmentClass = null;
+                    fragmentClass = FragmentBookingKendaraan.class;
+                    try {
+                        fragment = (Fragment)fragmentClass.newInstance();
+                    } catch (InstantiationException e) {
+                        e.printStackTrace();
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    fragmentManager.beginTransaction().replace(R.id.flContentAdmin, fragment).commit();
+                }
+            } else {
+
+                Fragment fragment = null;
+                Class fragmentClass = null;
+                fragmentClass = FragmentKelolaKendaraan.class;
+                try {
+                    fragment = (Fragment) fragmentClass.newInstance();
+                } catch (InstantiationException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.flContentAdmin, fragment).commit();
+            }
         }
 
         imageLoader = new ImageLoader(this);
@@ -106,10 +158,38 @@ public class Dashboard_Admin extends AppCompatActivity
         sharedPref = new SharedPref(getApplicationContext());
         id = sharedPref.getUserID();
         idToko = sharedPref.getTokoID();
-        Toast.makeText(this, "ID Toko: "+idToko, Toast.LENGTH_SHORT).show();
+
 
         new getProfilDetail().execute();
     }
+
+   /* @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        *//*Bundle extra = intent.getExtras();
+        Toast.makeText(this, "test!!!!!!!!!!!!!!!!!!!!", Toast.LENGTH_SHORT).show();
+        if (extra!=null){
+            String idFrg = extra.getString("FragmentBooking");
+            Toast.makeText(this, "Hello: "+idFrg, Toast.LENGTH_SHORT).show();
+            if (idFrg.equals("book")){
+                Log.d(TAG_SUCCESS, "Test");
+//            displaySelected(R.id.nav_booking);
+                Fragment fragment = null;
+                Class fragmentClass = null;
+                fragmentClass = FragmentBookingKendaraan.class;
+                try {
+                    fragment = (Fragment) fragmentClass.newInstance();
+                } catch (InstantiationException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.flContentAdmin, fragment).commit();
+            }
+        }*//*
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -210,6 +290,11 @@ public class Dashboard_Admin extends AppCompatActivity
     protected void onResume() {
         super.onResume();
         new getProfilDetail().execute();
+        /*Intent i = getIntent();
+        Bundle ex = i.getExtras();
+        String gt = ex.getString("FragmentBooking");
+        Toast.makeText(this, "Cang "+gt, Toast.LENGTH_SHORT).show();*/
+
     }
 
     @Override

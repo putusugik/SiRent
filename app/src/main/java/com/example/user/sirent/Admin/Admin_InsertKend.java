@@ -13,9 +13,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -33,6 +35,7 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
@@ -44,13 +47,20 @@ public class Admin_InsertKend extends AppCompatActivity {
     private static String url_merk = "http://sirent.esy.es/select_merkkendaraan.php";
     private static String url_tipe = "http://sirent.esy.es/select_tipekendaraan.php";
     private static String url_insertKend = "http://sirent.esy.es/insert_kendaraan.php";
+    private static String url_aksesoris = "http://sirent.esy.es/select_aksesoris.php";
     private static final String TAG_SUCCESS = "sukses";
+    public static final String TAG_IDAKS = "ID_aksesoris";
+    public static final String TAG_AKSESORIS = "nama_aksesoris";
     JSONParser jsonParser = new JSONParser();
     RequestParams params = new RequestParams();
     ArrayList<String> idmerk = new ArrayList<String>();
     ArrayList<String> merk_kendaraan = new ArrayList<String>();
     ArrayList<String> idtipe = new ArrayList<String>();
     ArrayList<String> tipe_kendaraan = new ArrayList<String>();
+    private AdapterAksesoris adapterAksesoris;
+    JSONArray aksesoris = null;
+    ArrayList<HashMap<String, String>> aksesorislist = new ArrayList<HashMap<String, String>>();
+
     private ProgressDialog pDialog;
 
     SharedPref sharedPref;
@@ -64,11 +74,13 @@ public class Admin_InsertKend extends AppCompatActivity {
     ImageView imgKend;
     EditText nama_kend, no_plat, no_mesin, jumlah, harga_sewa, deskripsi;
     String namaKend, noPlat, noMesin, jmlh, hargaSewa, deskrip, merkKend, tipeKend;
+    ListView lAkse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_insert_kend);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         nama_kend = (EditText)findViewById(R.id.nama_kend);
         no_plat = (EditText)findViewById(R.id.no_plat);
@@ -78,6 +90,7 @@ public class Admin_InsertKend extends AppCompatActivity {
         deskripsi = (EditText)findViewById(R.id.deskripsi);
         merkspin = (Spinner) findViewById(R.id.spinner2);
         tipespin = (Spinner) findViewById(R.id.spinner3);
+        lAkse = (ListView)findViewById(R.id.listAksesoris);
 
         imgKend = (ImageView)findViewById(R.id.imageKend);
         imageLoader = new ImageLoader(this);
@@ -89,6 +102,7 @@ public class Admin_InsertKend extends AppCompatActivity {
 
         new merkSpin().execute();
         new tipeSpin().execute();
+        new loadAksesoris().execute();
 
     }
 
@@ -391,4 +405,46 @@ public class Admin_InsertKend extends AppCompatActivity {
         });
     }
 
+    private class loadAksesoris extends AsyncTask<String, String, String> {
+        @Override
+        protected String doInBackground(String... args) {
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            JSONObject obj = jsonParser.makeHttpRequest(url_aksesoris, "GET", params);
+            Log.d("Aksesoris: ", obj.toString());
+
+            try {
+                int sukses = obj.getInt(TAG_SUCCESS);
+                if (sukses==1){
+                    aksesoris = obj.getJSONArray("aksesoris");
+                    aksesorislist.removeAll(aksesorislist);
+                    for (int i = 0; i < aksesoris.length(); i ++){
+                        JSONObject object = aksesoris.getJSONObject(i);
+                        HashMap<String,String> map = new HashMap<String, String>();
+                        String id = object.getString(TAG_IDAKS);
+                        String namaAks = object.getString(TAG_AKSESORIS);
+
+                        map.put(TAG_IDAKS, id);
+                        map.put(TAG_AKSESORIS, namaAks);
+
+                        aksesorislist.add(map);
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            if (adapterAksesoris!=null){
+                adapterAksesoris.notifyDataSetChanged();
+                return;
+            }
+            adapterAksesoris = new AdapterAksesoris(Admin_InsertKend.this, aksesorislist);
+            lAkse.setAdapter(adapterAksesoris);
+        }
+    }
 }

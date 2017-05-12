@@ -18,15 +18,24 @@ import java.util.HashMap;
 public class Booking_AdminAdapter extends BaseAdapter implements Filterable {
 
     private Activity activity;
+    private Context mcontext = null;
     private ArrayList<HashMap<String,String>> data;
     private ArrayList<HashMap<String,String>> dataBackup;
     private static LayoutInflater inflater = null;
     HashMap<String,String> booking = new HashMap<String, String>();
-    public Booking_AdminAdapter(Activity a, ArrayList<HashMap<String,String>> d){
+    public Booking_AdminAdapter(Activity a, ArrayList<HashMap<String,String>> d, Context ctx){
+        this.mcontext = ctx;
         activity = a;
         data = d;
         dataBackup = (ArrayList<HashMap<String,String>>)data.clone();
         inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
+
+    public Booking_AdminAdapter(Context context, ArrayList<HashMap<String, String>> d){
+        this.mcontext = context;
+        data = d;
+        dataBackup = (ArrayList<HashMap<String, String>>)data.clone();
+        inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
@@ -55,6 +64,7 @@ public class Booking_AdminAdapter extends BaseAdapter implements Filterable {
             TextView status = (TextView)v.findViewById(R.id.sttus);
             TextView tglSe = (TextView)v.findViewById(R.id.tgl_sew);
             TextView tglKem = (TextView)v.findViewById(R.id.tgl_kem);
+            TextView almt = (TextView)v.findViewById(R.id.t_alamat);
 
             booking = data.get(position);
 
@@ -63,9 +73,8 @@ public class Booking_AdminAdapter extends BaseAdapter implements Filterable {
             status.setText(booking.get(Booking_Admin.TAG_STATUSBOOK));
             tglSe.setText(booking.get(Booking_Admin.TAG_TGLSEWA));
             tglKem.setText(booking.get(Booking_Admin.TAG_TGLKEM));
+            almt.setText(booking.get(Booking_Admin.TAG_ALAMAT));
             return  v;
-
-
     }
 
     @Override

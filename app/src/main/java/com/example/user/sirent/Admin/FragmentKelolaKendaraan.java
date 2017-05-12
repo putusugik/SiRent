@@ -44,7 +44,9 @@ public class FragmentKelolaKendaraan extends Fragment {
     public static final String TAG_KENDARAAN = "nama_kendaraan";
     public static final String TAG_MESIN = "no_mesin";
     public static final String TAG_PLAT = "no_plat";
+    public static final String TAG_STATUS = "st_sewa";
     public static final String TAG_INDEX = "index";
+
 
     ListView listView;
     int id;
@@ -116,11 +118,13 @@ public class FragmentKelolaKendaraan extends Fragment {
                         String namaKend = obj.getString(TAG_KENDARAAN);
                         String noMes = obj.getString(TAG_MESIN);
                         String noPlat = obj.getString(TAG_PLAT);
+                        String stus = obj.getString(TAG_STATUS);
 
                         map.put(TAG_ID, id);
                         map.put(TAG_KENDARAAN, namaKend);
                         map.put(TAG_MESIN, noMes);
                         map.put(TAG_PLAT, noPlat);
+                        map.put(TAG_STATUS, stus);
                         map.put(TAG_INDEX, ""+i);
 
                         kendList.add(map);
@@ -142,7 +146,7 @@ public class FragmentKelolaKendaraan extends Fragment {
                 kelolaKend_adapter.notifyDataSetChanged();
                 return;
             }
-            kelolaKend_adapter = new KelolaKend_Adapter(getActivity(), kendList);
+            kelolaKend_adapter = new KelolaKend_Adapter(getContext(), kendList);
             listView.setAdapter(kelolaKend_adapter);
         }
     }

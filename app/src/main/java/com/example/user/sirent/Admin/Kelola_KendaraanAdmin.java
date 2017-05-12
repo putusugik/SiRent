@@ -31,9 +31,10 @@ public class Kelola_KendaraanAdmin extends AppCompatActivity {
     SharedPref sharedPref;
     private KelolaKend_Adapter kelolaKend_adapter;
 
-    JSONParser jsonParser = new JSONParser();
+    static JSONParser jsonParser = new JSONParser();
 
     private static String url_kendaraan = "http://sirent.esy.es/select_kendaraan.php";
+    private static String url_updatedtkendaraan = "http://sirent.esy.es/update_stsdtkendaraan.php";
     public static final String TAG_SUCCESS = "sukses";
     public static final String TAG_KEND = "kendaraan";
     public static final String TAG_ID = "id_kendaraan";
@@ -43,9 +44,10 @@ public class Kelola_KendaraanAdmin extends AppCompatActivity {
     public static final String TAG_INDEX = "index";
 
     int id;
+    String idkend;
     ListView lv;
     JSONArray kendaraan = null;
-    ArrayList<HashMap<String,String>> kendList = new ArrayList<HashMap<String, String>>();
+    ArrayList<HashMap<String, String>> kendList = new ArrayList<HashMap<String, String>>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,12 +57,12 @@ public class Kelola_KendaraanAdmin extends AppCompatActivity {
         sharedPref = new SharedPref(getApplicationContext());
         id = sharedPref.getUserID();
 
-        lv =(ListView)findViewById(R.id.list);
+        lv = (ListView) findViewById(R.id.list);
         new loadKendaraan().execute();
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String pID = ((TextView)view.findViewById(R.id.ID)).getText().toString();
+                String pID = ((TextView) view.findViewById(R.id.ID)).getText().toString();
                 Intent i = new Intent(getApplicationContext(), DetailKendaraanAdmin.class);
                 i.putExtra("ID", pID);
                 startActivityForResult(i, 100);
@@ -69,12 +71,13 @@ public class Kelola_KendaraanAdmin extends AppCompatActivity {
         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                String Pid = ((TextView)view.findViewById(R.id.ID)).getText().toString();
+                String Pid = ((TextView) view.findViewById(R.id.ID)).getText().toString();
                 Toast.makeText(Kelola_KendaraanAdmin.this, Pid, Toast.LENGTH_SHORT).show();
                 return false;
             }
 
         });
+
     }
 
     @Override
@@ -83,34 +86,35 @@ public class Kelola_KendaraanAdmin extends AppCompatActivity {
         new loadKendaraan().execute();
     }
 
-    private class loadKendaraan extends AsyncTask<String,String,String> {
+    private class loadKendaraan extends AsyncTask<String, String, String> {
         @Override
         protected String doInBackground(String... args) {
             List<NameValuePair> params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("id",""+id));
+            params.add(new BasicNameValuePair("id", "" + id));
 
             JSONObject jobject = jsonParser.makeHttpRequest(url_kendaraan, "GET", params);
 
             Log.d("Kendaraan: ", jobject.toString());
 
-            try{
+            try {
                 int sukses = jobject.getInt(TAG_SUCCESS);
-                if (sukses == 1){
+                if (sukses == 1) {
                     kendaraan = jobject.getJSONArray(TAG_KEND);
                     kendList.removeAll(kendList);
-                    for (int i = 0; i < kendaraan.length();i++){
+                    for (int i = 0; i < kendaraan.length(); i++) {
                         JSONObject obj = kendaraan.getJSONObject(i);
-                        HashMap<String, String> map = new HashMap<String,String>();
-                        String id = obj.getString(TAG_ID);
+                        HashMap<String, String> map = new HashMap<String, String>();
+                        idkend = obj.getString(TAG_ID);
                         String namaKend = obj.getString(TAG_KENDARAAN);
                         String noMes = obj.getString(TAG_MESIN);
                         String noPlat = obj.getString(TAG_PLAT);
 
-                        map.put(TAG_ID, id);
+
+                        map.put(TAG_ID, idkend);
                         map.put(TAG_KENDARAAN, namaKend);
                         map.put(TAG_MESIN, noMes);
                         map.put(TAG_PLAT, noPlat);
-                        map.put(TAG_INDEX, ""+i);
+                        map.put(TAG_INDEX, "" + i);
 
                         kendList.add(map);
                     }
@@ -124,7 +128,7 @@ public class Kelola_KendaraanAdmin extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String s) {
-            if (kelolaKend_adapter != null){
+            if (kelolaKend_adapter != null) {
                 kelolaKend_adapter.notifyDataSetChanged();
                 return;
             }
@@ -132,4 +136,19 @@ public class Kelola_KendaraanAdmin extends AppCompatActivity {
             lv.setAdapter(kelolaKend_adapter);
         }
     }
+
+    public static class updatedtKend extends AsyncTask<String, String, String> {
+        @Override
+        protected String doInBackground(String... args) {
+            /*List<NameValuePair> params = new ArrayList<NameValuePair>();
+            if (args[0].equals("IDkend")) {
+                params.add(new BasicNameValuePair("ID_kendaraan", args[1]));
+            }
+            JSONObject jobj = jsonParser.makeHttpRequest(url_updatedtkendaraan, "GET", params);
+            Log.d("Update: ", jobj.toString());*/
+            return null;
+
+        }
+    }
 }
+

@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.user.sirent.JSON.JSONParser;
 import com.example.user.sirent.R;
@@ -46,6 +45,7 @@ public class FragmentBookingKendaraan extends Fragment {
     public static final String TAG_STATUSBOOK = "status_rental";
     public static final String TAG_SEWA = "tgl_sewa";
     public static final String TAG_KEMBALI = "tgl_kembali";
+    public static final String TAG_ALAMAT = "alamat";
     public static final String TAG_INDEX = "index";
 
     int id, idToko;
@@ -76,16 +76,10 @@ public class FragmentBookingKendaraan extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String pID = ((TextView)view.findViewById(R.id.ID)).getText().toString();
                 String status = ((TextView)view.findViewById(R.id.sttus)).getText().toString();
-
-                if (status.equals("Booking")){
-                    Intent intent = new Intent(getActivity().getApplicationContext(), DetailBookingAdmin.class);
-                    intent.putExtra("ID", pID);
-                    startActivityForResult(intent, 100);
-                }else {
-                    Toast.makeText(getActivity(), "Anda sudah memberi konfirmasi", Toast.LENGTH_SHORT).show();
-                }
-
-
+                Intent intent = new Intent(getActivity().getApplicationContext(), DetailBookingAdmin.class);
+                intent.putExtra("ID", pID);
+                intent.putExtra("status", status);
+                startActivityForResult(intent, 100);
             }
         });
 
@@ -114,6 +108,7 @@ public class FragmentBookingKendaraan extends Fragment {
         protected String doInBackground(String... args) {
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("id",""+idToko));
+            Log.d("Toko: ", String.valueOf(idToko));
 
             JSONObject jObj = jsonParser.makeHttpRequest(url_booking, "GET", params);
             Log.d("Book: ", jObj.toString());
@@ -131,12 +126,14 @@ public class FragmentBookingKendaraan extends Fragment {
                         String sttus = obj.getString(TAG_STATUSBOOK);
                         String tsewa = obj.getString(TAG_SEWA);
                         String tkembali = obj.getString(TAG_KEMBALI);
+                        String almt = obj.getString(TAG_ALAMAT);
 
                         map.put(TAG_ID, id);
                         map.put(TAG_KENDARAAN, nKend);
                         map.put(TAG_STATUSBOOK, sttus);
                         map.put(TAG_SEWA, tsewa);
                         map.put(TAG_KEMBALI, tkembali);
+                        map.put(TAG_ALAMAT, almt);
                         map.put(TAG_INDEX, ""+i);
 
                         booklist.add(map);
@@ -157,7 +154,7 @@ public class FragmentBookingKendaraan extends Fragment {
                 bookingAdminAdapter.notifyDataSetChanged();
                 return;
             }
-            bookingAdminAdapter = new Booking_AdminAdapter(getActivity(), booklist);
+            bookingAdminAdapter = new Booking_AdminAdapter(getContext(), booklist);
             lv.setAdapter(bookingAdminAdapter);
 
         }

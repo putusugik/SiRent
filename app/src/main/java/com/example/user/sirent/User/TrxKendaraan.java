@@ -12,7 +12,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -57,6 +58,7 @@ public class TrxKendaraan extends Activity {
     String tgl_sewa, tgl_kembali, lokasi;
     Bitmap bitmap;
     String idToko;
+    long diff; long thari1; long thari2;
 
     private static int RESULT_LOAD_IMG = 1;
     JSONParser jsonParser = new JSONParser();
@@ -65,7 +67,10 @@ public class TrxKendaraan extends Activity {
     private ProgressDialog pDialog;
     TimePickerDialog timePickerDialog;
 
-    static Calendar calendar = Calendar.getInstance();
+    static Calendar calendars = Calendar.getInstance();
+    static Calendar calendark = Calendar.getInstance();
+    int hs = calendars.get(Calendar.HOUR_OF_DAY);
+    int ms = calendars.get(Calendar.MINUTE);
 
     Handler mHandler;
     public void updateLabel() {
@@ -127,6 +132,8 @@ public class TrxKendaraan extends Activity {
                         final EditText t_sewa = (EditText)dialog1.findViewById(R.id.tx_sewa);
                         final EditText t_kembali = (EditText)dialog1.findViewById(R.id.tx_kembali);
                         final EditText t_lokasi = (EditText)dialog1.findViewById(R.id.tx_lokasi);
+                        final EditText t_harga = (EditText)dialog1.findViewById(R.id.tx_harga);
+                        final EditText t_upload = (EditText)dialog1.findViewById(R.id.tx_uploadSIM);
                         t_lokasi.setFocusable(false);
                         t_lokasi.setFocusableInTouchMode(false);
 
@@ -137,19 +144,22 @@ public class TrxKendaraan extends Activity {
                             @Override
                             public void onClick(View v) {
                                 DatePickerDialog.OnDateSetListener dateSet = new DatePickerDialog.OnDateSetListener() {
+
                                     @Override
                                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                                        calendar.set(Calendar.YEAR, year);
-                                        calendar.set(Calendar.MONTH, monthOfYear);
-                                        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                                        calendars.set(Calendar.YEAR, year);
+                                        calendars.set(Calendar.MONTH, monthOfYear);
+                                        calendars.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                                         String format = "yyyy-MM-dd";
                                         final SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.getDefault());
-                                        int hs = calendar.get(Calendar.HOUR_OF_DAY);
-                                        int ms = calendar.get(Calendar.MINUTE);
+
                                         timePickerDialog = new TimePickerDialog(TrxKendaraan.this, new TimePickerDialog.OnTimeSetListener() {
                                             @Override
                                             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                                                t_sewa.setText(sdf.format(calendar.getTime()) + " " +hourOfDay +":" + minute);
+                                                hs = hourOfDay;
+                                                ms = minute;
+                                                t_sewa.setText(sdf.format(calendars.getTime()) + " " +hourOfDay +":" + minute);
+                                                //thari1 = calendar.getTime();
                                                 tgl_sewa = t_sewa.getText().toString();
 
                                             }
@@ -161,8 +171,8 @@ public class TrxKendaraan extends Activity {
                                     }
                                 };
 
-                                new DatePickerDialog(TrxKendaraan.this, dateSet, calendar.get(Calendar.YEAR),  calendar.get(Calendar.MONTH),
-                                        calendar.get(Calendar.DAY_OF_MONTH)).show();
+                                new DatePickerDialog(TrxKendaraan.this, dateSet, calendars.get(Calendar.YEAR),  calendars.get(Calendar.MONTH),
+                                        calendars.get(Calendar.DAY_OF_MONTH)).show();
                             }
                         });
                         t_kembali.setOnClickListener(new View.OnClickListener() {
@@ -171,28 +181,29 @@ public class TrxKendaraan extends Activity {
                                 DatePickerDialog.OnDateSetListener dateSet = new DatePickerDialog.OnDateSetListener() {
                                     @Override
                                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                                        calendar.set(Calendar.YEAR, year);
-                                        calendar.set(Calendar.MONTH, monthOfYear);
-                                        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                                        calendark.set(Calendar.YEAR, year);
+                                        calendark.set(Calendar.MONTH, monthOfYear);
+                                        calendark.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                                         String format = "yyyy-MM-dd";
                                         final SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.getDefault());
-                                        int hk = calendar.get(Calendar.HOUR_OF_DAY);
-                                        int mk = calendar.get(Calendar.MINUTE);
-                                        timePickerDialog = new TimePickerDialog(TrxKendaraan.this, new TimePickerDialog.OnTimeSetListener() {
+                                        t_kembali.setText(sdf.format(calendark.getTime()) + " " +hs +":" + ms);
+                                        // thari2 = calendar.getTime();
+                                        tgl_kembali = t_kembali.getText().toString();
+                                        /*timePickerDialog = new TimePickerDialog(TrxKendaraan.this, new TimePickerDialog.OnTimeSetListener() {
                                             @Override
                                             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                                                 t_kembali.setText(sdf.format(calendar.getTime()) + " " +hourOfDay +":" + minute);
+                                               // thari2 = calendar.getTime();
                                                 tgl_kembali = t_kembali.getText().toString();
-
                                             }
-                                        }, hk, mk, true);
+                                        }, hs, ms, true);
                                         //t_kembali.setText(sdf.format(calendar.getTime()));
 
-                                        timePickerDialog.show();
+                                        timePickerDialog.show();*/
                                     }
                                 };
-                                new DatePickerDialog(TrxKendaraan.this, dateSet, calendar.get(Calendar.YEAR),  calendar.get(Calendar.MONTH),
-                                        calendar.get(Calendar.DAY_OF_MONTH)).show();
+                                new DatePickerDialog(TrxKendaraan.this, dateSet, calendark.get(Calendar.YEAR),  calendark.get(Calendar.MONTH),
+                                        calendark.get(Calendar.DAY_OF_MONTH)).show();
                             }
                         });
 
@@ -205,10 +216,52 @@ public class TrxKendaraan extends Activity {
                             }
                         });
 
+                        t_kembali.addTextChangedListener(new TextWatcher() {
+                            @Override
+                            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                            }
+
+                            @Override
+                            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                            }
+
+                            @Override
+                            public void afterTextChanged(Editable s) {
+                                long diff = calendark.getTimeInMillis() - calendars.getTimeInMillis();
+                                long days  = diff / (24*60*60*1000);
+                                int cInt = (int)days;
+                                int harga = Integer.parseInt(tx_hrg.getText().toString());
+                                int total = cInt * harga;
+                                String selisih = String.valueOf(days);
+                                String result = String.valueOf(total);
+                                Toast.makeText(TrxKendaraan.this, "Selisih: "+selisih+" Hari", Toast.LENGTH_SHORT).show();
+                                t_harga.setText(result);
+
+                            }
+                        });
+
+                        t_upload.setOnTouchListener(new View.OnTouchListener() {
+                            @Override
+                            public boolean onTouch(View v, MotionEvent event) {
+                                Intent galleryIntent = new Intent(Intent.ACTION_PICK,
+                                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                                // Start the Intent
+                                startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
+                                return false;
+                            }
+                        });
+
+                        
+
 
                         bok.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+
+                                //diff = thari1 - thari2;
+                                //Toast.makeText(TrxKendaraan.this, "Selisih "+diff, Toast.LENGTH_SHORT).show();
                                 String tsewa = t_sewa.getText().toString();
                                 String tkem = t_kembali.getText().toString();
                                 String tlok = t_lokasi.getText().toString();

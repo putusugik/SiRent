@@ -41,6 +41,7 @@ public class Booking_Admin extends AppCompatActivity {
     public static final String TAG_STATUSBOOK = "status_rental";
     public static final String TAG_TGLSEWA = "tgl_sewa";
     public static final String TAG_TGLKEM = "tgl_kembali";
+    public static final String TAG_ALAMAT = "alamat";
     public static final String TAG_INDEX = "index";
 
     int id, idToko;
@@ -57,7 +58,10 @@ public class Booking_Admin extends AppCompatActivity {
         sharedPref = new SharedPref(getApplicationContext());
         id = sharedPref.getUserID();
         idToko = sharedPref.getTokoID();
-        Toast.makeText(this, "idtoko: "+idToko, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "idtoko: "+idToko, Toast.LENGTH_SHORT).show();
+        Intent i = getIntent();
+        String ts = i.getStringExtra("message");
+        Toast.makeText(this, "Res: "+ts, Toast.LENGTH_SHORT).show();
 
         lv = (ListView)findViewById(R.id.list);
         new loadBooking().execute();
@@ -102,12 +106,14 @@ public class Booking_Admin extends AppCompatActivity {
                         String sttus = obj.getString(TAG_STATUSBOOK);
                         String tGlse = obj.getString(TAG_TGLSEWA);
                         String tGlkem = obj.getString(TAG_TGLKEM);
+                        String alamat = obj.getString(TAG_ALAMAT);
 
                         map.put(TAG_ID, id);
                         map.put(TAG_KENDARAAN, nKend);
                         map.put(TAG_STATUSBOOK, sttus);
                         map.put(TAG_TGLSEWA, tGlse);
                         map.put(TAG_TGLKEM, tGlkem);
+                        map.put(TAG_ALAMAT, alamat);
                         map.put(TAG_INDEX, ""+i);
 
                         booklist.add(map);
