@@ -37,7 +37,7 @@
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
-        android:src="@mipmap/ic_sirent"/>
+        android:src="@drawable/iconhome"/>
 
 
         <LinearLayout

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:weightSum="0.9"
     android:layout_marginLeft="10dp">
 
@@ -13,6 +13,7 @@
 
     <CheckBox
         android:id="@+id/chk_aksesori"
+        android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:checked="false"
@@ -21,16 +22,29 @@
         android:id="@+id/tv_aksesoris"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="Aksesoris"
-        android:layout_weight="0.1"
+        android:layout_weight="0.23"
+        android:singleLine="false"
         android:textSize="17sp"
         android:textColor="@color/dark_dark"
         style="@style/Base.TextAppearance.AppCompat.Body2"/>
 
-    <NumberPicker
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.4"/>
+        android:layout_gravity="center"
+        android:layout_weight="0.27">
+
+    <EditText
+        android:id="@+id/et_hargaaks"
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Harga"
+        />
+
+    </android.support.design.widget.TextInputLayout>
 
 
 

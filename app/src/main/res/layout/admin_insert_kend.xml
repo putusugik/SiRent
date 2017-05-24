@@ -24,12 +24,12 @@
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/imageKend"
                 android:layout_width="174dp"
                 android:layout_height="112dp"
                 android:layout_gravity="center"
                 android:onClick="imageKend"
-                app:srcCompat="@drawable/ic_uploadkendaraan"
-                android:id="@+id/imageKend" />
+                app:srcCompat="@drawable/ic_uploadkendaraan" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -40,10 +40,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nama Kendaraan"
-                    android:inputType="textEmailAddress"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapWords"
                     android:maxLines="1"
-                    android:singleLine="true"
-                    android:imeOptions="actionNext" />
+                    android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -57,10 +57,10 @@
                     android:layout_height="wrap_content"
                     android:hint="Nomor Plat"
                     android:imeActionId="@+id/login"
-                    android:inputType="text"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapCharacters"
                     android:maxLines="1"
-                    android:singleLine="true"
-                    android:imeOptions="actionNext" />
+                    android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -73,39 +73,40 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nomor Mesin"
-                    android:inputType="textEmailAddress"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
                     android:maxLines="1"
-                    android:singleLine="true"
-                    android:imeOptions="actionNext" />
+                    android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>
 
             <TextView
-                android:text="Merk Kendaraan"
-                android:textSize="18dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/textView4"
-                android:imeOptions="actionNext" />
-
-            <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layoutMode="opticalBounds"
-                android:id="@+id/spinner2" />
+                android:imeOptions="actionNext"
+                android:text="Merk Kendaraan"
+                android:textSize="18dp" />
+
+            <Spinner
+                android:id="@+id/spinner2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layoutMode="opticalBounds" />
+
             <TextView
-                android:text="Tipe Kendaraan"
-                android:textSize="18dp"
+                android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView3"
-                android:imeOptions="actionNext" />
+                android:imeOptions="actionNext"
+                android:text="Tipe Kendaraan"
+                android:textSize="18dp" />
 
             <Spinner
+                android:id="@+id/spinner3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layoutMode="opticalBounds"
-                android:id="@+id/spinner3" />
+                android:layoutMode="opticalBounds" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -116,11 +117,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Jumlah"
+                    android:imeOptions="actionNext"
                     android:inputType="number"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:visibility="gone"
-                    android:imeOptions="actionNext" />
+                    android:visibility="gone" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -130,21 +131,21 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:text="Rp"
-                    android:textSize="18dp"
+                    android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView5" />
+                    android:text="Rp"
+                    android:textSize="18dp" />
 
                 <AutoCompleteTextView
                     android:id="@+id/harga_sewa"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Harga Sewa"
+                    android:imeOptions="actionNext"
                     android:inputType="number"
                     android:maxLines="1"
-                    android:singleLine="true"
-                    android:imeOptions="actionNext" />
+                    android:singleLine="true" />
             </LinearLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -156,39 +157,39 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Deskripsi"
+                    android:imeOptions="normal"
                     android:inputType="textMultiLine"
                     android:maxLines="2"
-                    android:singleLine="false"
-                    android:imeOptions="normal"
-                    android:scrollbars="vertical"
                     android:scrollbarAlwaysDrawVerticalTrack="true"
-                    android:scrollbarStyle="insideInset" />
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbars="vertical"
+                    android:singleLine="false" />
 
             </android.support.design.widget.TextInputLayout>
 
             <EditText
+                style="@style/Base.TextAppearance.AppCompat.Subhead"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Aksesoris Tambahan"
                 android:enabled="false"
+                android:text="Aksesoris Tambahan"
                 android:textColor="@color/dark_darker"
-                android:textStyle="bold"
-                style="@style/Base.TextAppearance.AppCompat.Subhead"/>
+                android:textStyle="bold" />
 
             <ListView
+                android:id="@+id/listAksesoris"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:nestedScrollingEnabled="true"
-                android:id="@+id/listAksesoris">
+                android:nestedScrollingEnabled="true">
 
             </ListView>
+
             <Button
-                android:text="Simpan"
+                android:id="@+id/bt_simpankend"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/button2"
-                android:onClick="simpanKend"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:text="Simpan" />
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
