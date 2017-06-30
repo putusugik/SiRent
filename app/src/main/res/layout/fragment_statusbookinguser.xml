@@ -11,69 +11,82 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="1">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_weight="0.6">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sewa dari"
-                android:textSize="26sp"
-                android:textColor="@color/dark_primary"
-                android:gravity="center"/>
+                android:visibility="gone"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_toko"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sewa dari"
+                    android:textSize="26sp"
+                    android:textColor="@color/dark_primary"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:id="@+id/tv_toko"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Toko online"
+                    android:textSize="18sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Toko online"
-                android:textSize="18sp"/>
+                android:layout_height="150dp"
+                android:orientation="horizontal">
 
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/img_book"
+                    android:layout_gravity="right"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/common_google_signin_btn_icon_dark_focused" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/img_book"
-                android:layout_gravity="right"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:srcCompat="@drawable/common_google_signin_btn_icon_dark_focused" />
+            </LinearLayout>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="@color/dark_primary">
+            android:layout_weight="0.4"
+            android:background="@color/dark_primary"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="20dp"
+                android:orientation="horizontal"
                 android:weightSum="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.4"
+                    android:fontFamily="sans-serif-condensed"
                     android:text="Tanggal Sewa"
                     android:textColor="@color/dark_light"
-                    android:fontFamily="sans-serif-condensed"
                     android:textSize="21sp"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tv_tglsewa"
@@ -83,28 +96,26 @@
                     android:text="00-00-0000"
                     android:textColor="#FFFF"
                     android:textSize="21sp"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="10dp"
+                android:orientation="horizontal"
                 android:weightSum="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.4"
-                    android:text="Tanggal Kembali"
                     android:fontFamily="sans-serif-condensed"
+                    android:text="Tanggal Kembali"
                     android:textColor="@color/dark_light"
                     android:textSize="21sp"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tv_tglkembali"
@@ -114,34 +125,32 @@
                     android:text="00-00-0000"
                     android:textColor="#FFFF"
                     android:textSize="21sp"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="10dp"
+                android:orientation="horizontal"
                 android:weightSum="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.4"
-                    android:text="Kendaraan"
                     android:fontFamily="sans-serif-condensed"
+                    android:text="Kendaraan"
                     android:textColor="@color/dark_light"
                     android:textSize="21sp"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="0.6">
+                    android:layout_weight="0.6"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/tv_kendaraan"
@@ -150,15 +159,15 @@
                         android:text="Motor/Mobil"
                         android:textColor="#FFFF"
                         android:textSize="21sp"
-                        android:textStyle="bold"
-                        />
+                        android:textStyle="bold" />
+
                     <TextView
                         android:id="@+id/tv_noplat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Nomor Plat"
-                        android:textSize="18sp"
                         android:textColor="#FFFF"
+                        android:textSize="18sp"
 
                         />
                 </LinearLayout>
@@ -168,20 +177,48 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="10dp"
+                android:orientation="horizontal"
                 android:weightSum="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.4"
-                    android:text="Status"
                     android:fontFamily="sans-serif-condensed"
+                    android:text="Total Harga"
                     android:textColor="@color/dark_light"
                     android:textSize="21sp"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_total"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:text="Total"
+                    android:textColor="#FFFF"
+                    android:textSize="21sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.4"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="Status"
+                    android:textColor="@color/dark_light"
+                    android:textSize="21sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tv_status"
@@ -191,44 +228,44 @@
                     android:text="Progress"
                     android:textColor="#FFFF"
                     android:textSize="21sp"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@color/grass_primary"
                 android:layout_marginTop="10dp"
+                android:background="@color/grass_primary"
+                android:orientation="horizontal"
                 android:weightSum="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.4"
-                    android:text="Help"
                     android:fontFamily="sans-serif-condensed"
+                    android:text="Help"
                     android:textColor="#FFFF"
                     android:textSize="21sp"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/bt_help"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.6"
-                    android:text="Call"
-                    android:textSize="21sp"
                     android:background="@color/grass_primary"
-                    android:textColor="#FFFF"/>
+                    android:text="Call"
+                    android:textColor="#FFFF"
+                    android:textSize="21sp" />
 
             </LinearLayout>
 
         </LinearLayout>
 
     </LinearLayout>
+
+
 
 </FrameLayout>

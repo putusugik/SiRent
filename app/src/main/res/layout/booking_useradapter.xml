@@ -1,8 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="1">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_weight="0.3"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
@@ -10,122 +17,148 @@
             android:id="@+id/id_kend"
             android:visibility="gone"/>
 
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Kendaraan"
-            android:textSize="7pt"
-            android:textColor="@color/dark_dark"
-            android:layout_below="@+id/id_kend"
-            android:layout_alignParentStart="true"
-            android:layout_toStartOf="@+id/t_namakend"
-            android:layout_alignEnd="@+id/textView14" />
+            android:orientation="horizontal"
+            android:weightSum="1">
 
-        <TextView
-            android:id="@+id/t_namakend"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kendaraan"
+                android:textSize="7pt"
+                android:textColor="@color/dark_light"
+                android:layout_weight="0.5"/>
+
+            <TextView
+                android:id="@+id/t_namakend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:hint="Kendaraan"
+                android:textSize="7pt"
+                android:textColor="@color/dark_dark"
+                android:layout_weight="0.5"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Kendaraan"
-            android:textSize="7pt"
-            android:textColor="@color/dark_dark"
-            android:layout_above="@+id/t_plat"
-            android:layout_alignStart="@+id/t_plat" />
+            android:orientation="horizontal"
+            android:weightSum="1">
 
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nomor Plat"
-        android:textSize="7pt"
-        android:textColor="@color/dark_dark"
-        android:layout_below="@+id/textView12"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="2dp"
-        android:layout_alignEnd="@+id/textView16" />
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nomor Plat"
+                android:textSize="7pt"
+                android:textColor="@color/dark_light"
+                android:layout_weight="0.5"/>
 
-    <TextView
-        android:id="@+id/t_plat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Nomor Plat"
-        android:textSize="7pt"
-        android:textColor="@color/dark_dark"
-        android:layout_marginStart="17dp"
-        android:layout_alignBaseline="@+id/textView14"
-        android:layout_alignBottom="@+id/textView14"
-        android:layout_toEndOf="@+id/textView18" />
+            <TextView
+                android:id="@+id/t_plat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nomor Plat"
+                android:layout_gravity="left"
+                android:textSize="7pt"
+                android:textColor="@color/dark_dark"
+                android:layout_weight="0.5"/>
 
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView14"
-        android:layout_marginTop="2dp"
-        android:text="Tanggal Sewa"
-        android:textSize="7pt"
-        android:textColor="@color/dark_dark"/>
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/t_tglsewa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/t_plat"
-        android:layout_alignTop="@+id/textView16"
-        android:hint="Tanggal Sewa"
-        android:textSize="7pt"
-        android:textColor="@color/dark_dark"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
 
-    <TextView
-        android:id="@+id/textView18"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView16"
-        android:layout_toEndOf="@+id/id_kend"
-        android:text="Tanggal Kembali"
-        android:textSize="7pt"
-        android:textColor="@color/dark_dark"/>
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tanggal Sewa"
+                android:layout_weight="0.5"
+                android:textSize="7pt"
+                android:textColor="@color/dark_light"/>
 
-    <TextView
-        android:id="@+id/t_tglkembali"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Tanggal Kembali"
-        android:textColor="@color/dark_dark"
-        android:textSize="7pt"
-        android:layout_alignBaseline="@+id/textView18"
-        android:layout_alignBottom="@+id/textView18"
-        android:layout_alignStart="@+id/t_tglsewa" />
+            <TextView
+                android:id="@+id/t_tglsewa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:layout_gravity="left"
+                android:hint="Tanggal Sewa"
+                android:textSize="7pt"
+                android:textColor="@color/dark_dark"/>
 
-    <TextView
-        android:id="@+id/textView20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView18"
-        android:layout_toEndOf="@+id/id_kend"
-        android:text="Status"
-        android:textColor="@color/dark_dark"
-        android:textSize="7pt"/>
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/t_status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Status"
-        android:textSize="7pt"
-        android:textColor="@color/dark_dark"
-        android:layout_below="@+id/t_tglkembali"
-        android:layout_alignStart="@+id/t_tglkembali" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            app:srcCompat="@drawable/ic_trans"
-            android:id="@+id/img_kend"
-            android:layout_marginEnd="18dp"
-            android:layout_alignTop="@+id/t_namakend"
-            android:layout_alignParentEnd="true" />
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tanggal Kembali"
+                android:layout_weight="0.5"
+                android:textSize="7pt"
+                android:textColor="@color/dark_light"/>
 
+            <TextView
+                android:id="@+id/t_tglkembali"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tanggal Kembali"
+                android:layout_gravity="left"
+                android:layout_weight="0.5"
+                android:textColor="@color/dark_dark"
+                android:textSize="7pt" />
 
-    </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Status"
+                android:layout_weight="0.5"
+                android:textColor="@color/dark_light"
+                android:textSize="7pt"/>
+
+            <TextView
+                android:id="@+id/t_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:hint="Status"
+                android:layout_weight="0.5"
+                android:textSize="7pt"
+                android:textColor="@color/dark_dark" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/ic_trans"
+        android:id="@+id/img_kend"
+        android:layout_weight="0.7"/>
+
+</LinearLayout>

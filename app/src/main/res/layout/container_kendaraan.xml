@@ -14,18 +14,22 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:weightSum="1">
 
             <ImageView
-                android:layout_width="74dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:srcCompat="@mipmap/ic_mobil"
-                android:id="@+id/imageView2" />
+                android:id="@+id/imgKen"
+                android:layout_weight="0.7"/>
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="0.3">
 
                 <TextView
                     android:text="ID"
@@ -45,7 +49,8 @@
                     android:text="Nomor Plat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/text_noplat" />
+                    android:id="@+id/text_noplat"
+                    android:visibility="gone"/>
 
                 <TextView
                     android:text="Tipe Kendaraan"

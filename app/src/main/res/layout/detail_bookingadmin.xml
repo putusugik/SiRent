@@ -1,9 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent">
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_menu_gallery"
+            android:layout_marginBottom="20dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="0.5">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="30dp"
+                    android:text="Tanggal Sewa"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:textSize="20sp"
+                    android:textColor="@color/dark_primary"
+                    android:text="Tanggal Kembali"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="0.5">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_marginBottom="30dp"
+                    android:textColor="@color/dark_dark"
+                    android:text="Tanggal Sewa"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="@color/dark_dark"
+                    android:text="Tanggal Kembali"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/sea_primary">
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Penyewa"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+
+
+
+</LinearLayout>
+
+
+
+    <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/detail_bookingadmin"
         android:layout_width="match_parent"
@@ -147,13 +231,31 @@
             android:focusable="false"
             android:focusableInTouchMode="false" />
 
+        <ImageView
+            android:id="@+id/imgSim"
+            android:src="@drawable/ic_menu_gallery"
+            android:layout_marginBottom="5dp"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:weightSum="1">
 
             <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/bt_sim"
+                android:text="Lihat SIM"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:background="@color/grass_primary"
+                />
+            <Button
+                android:layout_marginTop="5dp"
                 android:id="@+id/confirm"
                 android:text="Konfirmasi"
                 android:layout_gravity="center"
@@ -164,5 +266,4 @@
 
         </LinearLayout>
 
-    </LinearLayout>
-</ScrollView>
+    </LinearLayout>-->

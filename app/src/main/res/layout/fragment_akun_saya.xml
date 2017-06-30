@@ -3,12 +3,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
-    android:fitsSystemWindows="true"
     tools:context="com.example.user.sirent.User.Fragment_AkunSaya">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         xmlns:android="http://schemas.android.com/apk/res/android">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -53,7 +52,7 @@
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <EditText
                     android:id="@+id/edit_namadep"
@@ -62,13 +61,13 @@
                     android:ems="10"
                     android:enabled="false"
                     android:hint="Nama Depan"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName|textCapWords" />
 
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <EditText
                     android:id="@+id/edit_namabel"
@@ -77,13 +76,13 @@
                     android:ems="10"
                     android:enabled="false"
                     android:hint="Nama Belakang"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName|textCapWords" />
 
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <EditText
                     android:id="@+id/edit_tempatlahir"
@@ -92,13 +91,13 @@
                     android:ems="10"
                     android:enabled="false"
                     android:hint="Tempat Lahir"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName|textCapWords" />
 
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <EditText
                     android:id="@+id/edit_tgllahir"
@@ -118,7 +117,8 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textMultiLine"
+                    android:inputType="textMultiLine|textCapWords"
+                    android:imeOptions="actionDone"
                     android:hint="Alamat"
                     android:enabled="false"
                     android:ems="10"
@@ -153,6 +153,29 @@
                     android:id="@+id/edit_email" />
             </android.support.design.widget.TextInputLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <ImageView
+                    android:id="@+id/im_SIM"
+                    android:layout_width="70dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.6"
+                    android:src="@drawable/ic_menu_gallery"/>
+                <EditText
+                    android:id="@+id/tx_uploadSIM"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.4"
+                    android:hint="Upload SIM"
+                    android:focusableInTouchMode="false"
+                    android:focusable="false" />
+
+            </LinearLayout>
+
             <Button
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:id="@+id/bt_foto"
@@ -161,7 +184,6 @@
                 android:layout_height="wrap_content"
                 android:text="Foto" />
 
-
             <Button
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:id="@+id/bt_edit"
@@ -169,12 +191,8 @@
                 android:layout_height="wrap_content"
                 android:text="Edit" />
 
-
         </LinearLayout>
 
     </ScrollView>
-
-
-
 
 </LinearLayout>
